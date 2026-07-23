@@ -3,6 +3,7 @@ import Confetti from 'react-confetti';
 import { motion } from 'framer-motion';
 import { Frown, PartyPopper, FileText } from 'lucide-react';
 import './App.css';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 function App() {
   const [resumeFile, setResumeFile] = useState(null);
@@ -19,7 +20,7 @@ function App() {
     formData.append('job_description', jobDescription);
 
     try {
-      const res = await fetch('http://localhost:8000/evaluate-resume', {
+      const res = await fetch(`${API_URL}/evaluate-resume`, {
         method: 'POST',
         body: formData
       });
